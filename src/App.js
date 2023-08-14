@@ -1,9 +1,14 @@
 import React ,{useState} from 'react';
-import ' ./App.css';
+import './App.css';
 
 
 function App() {
 
+const [newItem , setNewItem]= useState("");
+
+function addItem(){
+ console.log(newItem) 
+}
 
 
   return (
@@ -12,11 +17,16 @@ function App() {
 
 
 
-<input type="text" placeholder='add an item..' />
+<input
+type="text"
+ placeholder='add an item..' 
+ value={newItem}
+ onChange={e => setNewItem(e.target.value)}
+ />
 
 
 
-<button>Add</button>
+<button onClick={()=> addItem()} >Add</button>
 <ul>
   <li>Spor yapılacak</li>
   <li>Spor yapılacak</li>
