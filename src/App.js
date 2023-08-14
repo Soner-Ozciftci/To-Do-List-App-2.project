@@ -5,9 +5,23 @@ import './App.css';
 function App() {
 
 const [newItem , setNewItem]= useState("");
+const [items,setItems]=useState([]);
 
 function addItem(){
- console.log(newItem) 
+
+if(!newItem){
+ alert("enter an item");
+ return;
+
+}
+
+
+const item = {
+  id: Math.floor(Math.random()*1000),
+  value: newItem
+}
+setItems(oldItems => [...oldItems,item])
+setNewItem("");
 }
 
 
@@ -28,9 +42,12 @@ type="text"
 
 <button onClick={()=> addItem()} >Add</button>
 <ul>
-  <li>Spor yapılacak</li>
-  <li>Spor yapılacak</li>
-  <li>Spor yapılacak</li>
+{items.map(item =>{
+ return(
+  <li key={item.id}>{item.value}</li>
+ )
+})}
+
 </ul>
     </div>
   );
